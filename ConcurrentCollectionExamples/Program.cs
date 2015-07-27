@@ -14,6 +14,9 @@ namespace ConcurrentCollectionExamples
             
             // thread save
             new Example1().Run();
+            Console.ReadKey();
+            
+            new Example2().Run();
 
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();

@@ -5,21 +5,19 @@ using System.Threading.Tasks;
 
 namespace ConcurrentCollectionExamples
 {
-    public class Example1 : IExample
+    public class Example2 : IExample
     {
         public void Run()
         {
-            Console.WriteLine("Example 1");
+            Console.WriteLine("Example 2");
             var orders = new Queue<string>();
             Task task1 = Task.Run(() => PlaceOrders(orders, "Mark"));
             Task task2 = Task.Run(() => PlaceOrders(orders, "Ramdevi"));
             Task task3 = Task.Run(() => PlaceOrders(orders, "John"));
             Task.WaitAll(task1, task2, task3);
 
-            foreach (var order in orders)
-            {
-                Console.WriteLine(order);
-            }
+            // Parallel for each executed on different thread
+            Parallel.ForEach(orders, (order) => Console.WriteLine(order));
         }
 
         private static object _lockObj = new object();
