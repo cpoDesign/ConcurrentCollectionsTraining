@@ -17,10 +17,13 @@ namespace ConcurrentCollectionExamples
             Task.WaitAll(task1, task2, task3);
 
             // Parallel for each executed on different thread
+            // we do not care how it will be assigned between threads
+            // If we do we will use partitioner
             Parallel.ForEach(orders, (order) => Console.WriteLine(order));
         }
 
         private static object _lockObj = new object();
+
         private static void PlaceOrders(Queue<string> orders, string name)
         {
             for (int i = 0; i < 5; i++)
