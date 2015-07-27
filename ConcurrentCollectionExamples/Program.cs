@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -14,9 +13,8 @@ namespace ConcurrentCollectionExamples
             
             // thread save
             new Example1().Run();
-            Console.ReadKey();
-            
             new Example2().Run();
+            new Example3().Run();
 
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
